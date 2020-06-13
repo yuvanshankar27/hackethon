@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Regression Testing]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Regression Test(failed)">
+    <classes>
+      <class name="TestCases.ValidTestCases">
+        <methods>
+          <include name="test_To_Check_Cab_Details"/>
+          <include name="terminate_Browser"/>
+          <include name="get_Driver_Instance"/>
+          <include name="generate_ExtentReport"/>
+          <include name="get_Test_Case_Result"/>
+        </methods>
+      </class> <!-- TestCases.ValidTestCases -->
+    </classes>
+  </test> <!-- Regression Test(failed) -->
+</suite> <!-- Failed suite [Regression Testing] -->

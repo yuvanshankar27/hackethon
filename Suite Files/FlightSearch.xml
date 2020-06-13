@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Flight Search">
+  <test thread-count="5" name="Flight Search Test">
+    <classes>
+      <class name="TestCases.ValidTestCases">
+      	<methods >
+      	<include name="test_Flight_Icon"/>
+        <include name="test_Set_Flight_Details"/>
+    	</methods>
+    	</class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+

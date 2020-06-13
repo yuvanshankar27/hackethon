@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="TestCases.InvalidTestCases">
+        <methods>
+          <include name="terminate_Report"/>
+          <include name="get_Driver_Instance"/>
+          <include name="get_Test_Case_Result"/>
+          <include name="generate_ExtentReport"/>
+          <include name="terminate_Browser"/>
+          <include name="test_Invalid_Date_Of_Journey"/>
+        </methods>
+      </class> <!-- TestCases.InvalidTestCases -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

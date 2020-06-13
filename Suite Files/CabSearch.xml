@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cab Search">
+  <test thread-count="5" name="Cab Search Test">
+    <classes>
+      <class name="TestCases.ValidTestCases">
+      	<methods >
+      	<include name="test_Cab_Icon"/>
+        <include name="test_Cab_Page_Title"/>
+        <include name="test_OutstationOneWay_TripType"/>
+        <include name="test_Set_Cab_Details"/>
+        <include name="test_To_Check_Cab_Details"/>
+    	</methods>
+    	</class>
+      <class name="TestCases.InvalidTestCases">
+      	<methods >
+      	<include name="test_Same_Location_Of_Journey"/>
+        <include name="test_Invalid_Date_Of_Journey"/>
+        <include name="test_ReturnDate_Disabled"/>
+        <include name="test_OutstationTrip_Selected"/>
+    	</methods>
+    	</class>	
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
