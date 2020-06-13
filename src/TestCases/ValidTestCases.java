@@ -35,62 +35,68 @@ public class ValidTestCases extends BaseClass {
 	TestData data = new TestData();
 	public Properties property;
 
-	// **** Method to get Driver Instance ****
+	// ** Method to get Driver Instance **
 	@BeforeClass
 	public void get_Driver_Instance() throws IOException {
 		driver = BaseClass.invoke_Browser();
 	}
 
-	// **** Method to get Test Results ****
-	@AfterMethod
-	public void get_Test_Case_Result(ITestResult result) throws Exception {
-		ExportToExcel objExcelFile = new ExportToExcel();
-		property = BaseClass.invoke_Property_File();
+	// ** Method to get Test Results **
+		@AfterMethod
+		public void get_Test_Case_Result(ITestResult result) throws Exception {
+			ExportToExcel objExcelFile = new ExportToExcel();
+			property = BaseClass.invoke_Property_File();
+			if (result.getStatus() == ITestResult.FAILURE) {
+				logger.log(Status.FAIL, MarkupHelper.createLabel(message + " - FAILED", ExtentColor.RED));
+				logger.fail(result.getThrowable());
+				String screenshotPath = BaseClass.get_ScreenShot_Of_Failed_TestCase(driver, result.getName());
+				logger.fail("Failed Test Case Snapshot is attached below " + logger.addScreenCaptureFromPath(screenshotPath));
 
-		if (result.getStatus() == ITestResult.FAILURE) {
-			logger.log(Status.FAIL, MarkupHelper.createLabel(message + " - FAILED", ExtentColor.RED));
-			String screenshotPath = BaseClass.get_ScreenShot_Of_Failed_TestCase(driver, result.getName());
-			logger.fail(result.getThrowable());
-			logger.fail("Test Case Failed Snapshot is below " + logger.addScreenCaptureFromPath(screenshotPath));
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Fail");
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			logger.log(Status.SKIP, MarkupHelper.createLabel(message + " - SKIPPED", ExtentColor.ORANGE));
-			logger.fail(result.getThrowable());
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Skip");
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			logger.log(Status.PASS, MarkupHelper.createLabel(message + " - PASSED", ExtentColor.GREEN));
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Pass");
+				objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+						result.getName(), "Fail");
+			} else if (result.getStatus() == ITestResult.SKIP) {
+				logger.log(Status.SKIP, MarkupHelper.createLabel(message + " - SKIPPED", ExtentColor.ORANGE));
+				logger.skip(result.getThrowable());
+				objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+						result.getName(), "Skip");
+			} else if (result.getStatus() == ITestResult.SUCCESS) {
+				logger.log(Status.PASS, MarkupHelper.createLabel(message + " - PASSED", ExtentColor.GREEN));
+				objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+						result.getName(), "Pass");
+			}
+
 		}
-	}
 
-	// **** Test to verify URL ****
+	// ** Test to verify URL **
 	@Test(priority = 1)
 	public void test_URL_Appear_Correct() throws IOException {
 
 		logger = extent.createTest("test_URL_Appear_Correct");
+		logger.assignCategory("Smoke Tests");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Website URL", ExtentColor.CYAN));
 		message = "URL verification";
 		Assert.assertTrue(driver.getCurrentUrl().contains(data.get_Data("Login Page", "URL")));// TC-1
 	}
 
-	// **** Test to verify HomePage Title ****
+	// ** Test to verify HomePage Title **
 	@Test(priority = 2)
 	public void test_Home_Page_Title() throws IOException {
 
 		logger = extent.createTest("test_Home_Page_Title");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Home Page Title", ExtentColor.CYAN));
 		message = "Home Page Title verification";
 		Assert.assertTrue(driver.getTitle().contains(data.get_Data("Login Page", "HomePageTitle")));// TC-2
 	}
 
-	// **** Test to verify SigIn button is Enabled ****
-	@Test(priority = 3)
+	// ** Test to verify SigIn button is Enabled **
+	//@Test(priority = 3)
 	public void test_SignIn_Button() throws IOException, InterruptedException, ParseException {
 
 		logger = extent.createTest("test_SignIn_Button");
+		logger.assignCategory("Smoke Tests");
+		logger.assignCategory("Regression Tests");
 		objHomePage = new HomePage(driver);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		logger.log(Status.INFO,
@@ -99,10 +105,12 @@ public class ValidTestCases extends BaseClass {
 		Assert.assertTrue(objHomePage.click_SignIn_Button());
 	}
 
-	// **** Test to perform and verify Login ****
-	@Test(priority = 4)
+	// ** Test to perform and verify Login **
+	//@Test(priority = 4)
 	public void test_LogIn_Details() throws IOException {
 		logger = extent.createTest("test_LogIn_Details");
+		logger.assignCategory("Smoke Tests");
+		logger.assignCategory("Regression Tests");
 		objLogin = new LoginPage(driver);
 		objLogin.LogIn(data.get_Data("Login Page", "Username"), data.get_Data("Login Page", "Password"));
 		logger.log(Status.INFO, MarkupHelper.createLabel(
@@ -112,11 +120,12 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify FlightIcon is Enabled ****
+	// ** Test to verify FlightIcon is Enabled **
 	@Test(priority = 5)
 	public void test_Flight_Icon() throws IOException, InterruptedException {
 		property = BaseClass.invoke_Property_File();
 		logger = extent.createTest("test_flight_Icon");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Flight Icon is Selected", ExtentColor.CYAN));
 		message = "Flight Icon Enabled";
 		Assert.assertTrue(driver.findElement(By.xpath(property.getProperty("flight_icon_xpath"))).getAttribute("class")
@@ -124,31 +133,35 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify CabIcon is Enabled ****
+	// ** Test to verify CabIcon is Enabled **
 	@Test(priority = 6)
 	public void test_Cab_Icon() throws ParseException, IOException {
 
 		logger = extent.createTest("test_Cab_Icon");
+		logger.assignCategory("Smoke Tests");
+		logger.assignCategory("Regression Tests");
 		objHomePage = new HomePage(driver);
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Cab Icon is Enabled", ExtentColor.CYAN));
 		message = "Cab Icon Enabled";
 		Assert.assertTrue(objHomePage.click_Cab_Icon());// TC-5
 	}
 
-	// **** Test to verify CabPage Title ****
+	// ** Test to verify CabPage Title **
 	@Test(priority = 7)
 	public void test_Cab_Page_Title() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Cab_Page_Title");
+		logger.assignCategory("Regression Tests");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Cab Page Title", ExtentColor.CYAN));
 		message = "Cab Page Title verification";
 		Assert.assertTrue(driver.getTitle().contains(data.get_Data("Cab Page", "CabPageTitle")));// TC-6
 	}
 
-	// **** Test to verify OutstationOneWay TripType is selected by default ****
+	// ** Test to verify OutstationOneWay TripType is selected by default **
 	@Test(priority = 8)
 	public void test_OutstationOneWay_TripType() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_TripType_Button");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper
 				.createLabel("Test to Verify - OutstationOneWay TripType Radio Button is Selected", ExtentColor.CYAN));
 		message = "OutstationOneWay TripType Radio Button Selected";
@@ -156,10 +169,12 @@ public class ValidTestCases extends BaseClass {
 				.contains(property.getProperty("tripType_data_cy")));// TC-7
 	}
 
-	// **** Test to set Cab Details ****
+	// ** Test to set Cab Details **
 	@Test(priority = 9)
 	public void test_Set_Cab_Details() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Set_Cab_Details");
+		logger.assignCategory("Smoke Tests");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Cab Details are set successfully", ExtentColor.CYAN));
 		message = "Set Cab Details";
@@ -170,10 +185,11 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify Cab Details and to get Cab name and cost ****
+	// ** Test to verify Cab Details and to get Cab name and cost **
 	@Test(priority = 10)
 	public void test_To_Check_Cab_Details() throws InterruptedException, IOException, ParseException {
 		logger = extent.createTest("test_To_Check_Cab_Details");
+		logger.assignCategory("Regression Tests");
 		objCabSearch = new CabSearch(driver);
 
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verfiy - Trip Type", ExtentColor.CYAN));
@@ -205,10 +221,11 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify FlightIcon is Enabled ****
+	// ** Test to verify FlightIcon is Enabled **
 	@Test(priority = 11)
 	public void test_Flight_Button() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Flight_Button");
+		logger.assignCategory("Regression Tests");
 		objHomePage = new HomePage(driver);
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Flight Icon is Enabled", ExtentColor.CYAN));
 		message = "Flight Icon Enabled";
@@ -216,17 +233,18 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify FlightPage Title ****
+	// ** Test to verify FlightPage Title **
 	@Test(priority = 12)
 	public void test_Flight_Page_Title() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Flight_Page_Title");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper.createLabel("Test to Verify - Flight Page Title", ExtentColor.CYAN));
 		message = "Flight Page Title verification";
 		Assert.assertTrue(driver.getTitle().contains(data.get_Data("Flight Page", "FlightPageTitle")));
 
 	}
 
-	// **** Test to set Flight Details ****
+	// ** Test to set Flight Details **
 	@Test(priority = 13)
 	public void test_Set_Flight_Details() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Set_Flight_Details");
@@ -242,10 +260,11 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify HoteBooking Icon is Enabled ****
+	// ** Test to verify HoteBooking Icon is Enabled **
 	@Test(priority = 14)
 	public void test_Hotel_Booking_Icon() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Hotel_Booking_Icon");
+		logger.assignCategory("Regression Tests");
 		objHomePage = new HomePage(driver);
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Hotel Booking Icon is Enabled", ExtentColor.CYAN));
@@ -253,10 +272,11 @@ public class ValidTestCases extends BaseClass {
 		Assert.assertTrue(objHomePage.click_HotelBooking_Icon());
 	}
 
-	// **** Test to verify HoteBooking Page Title ****
+	// ** Test to verify HoteBooking Page Title **
 	@Test(priority = 15)
 	public void test_Hotel_Booking_Page_Title() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Hotel_Booking_Page_Title");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Hotel Booking Page Title", ExtentColor.CYAN));
 		message = "Hotel Booking Page Title verification";
@@ -264,10 +284,11 @@ public class ValidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to Get AdultList Details ****
+	// ** Test to Get AdultList Details **
 	@Test(priority = 16)
 	public void test_Hotel_Booking() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Hotel_Booking");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO, MarkupHelper.createLabel("Get Adult List Details", ExtentColor.CYAN));
 		message = "Getting Adult List Details";
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -276,7 +297,7 @@ public class ValidTestCases extends BaseClass {
 		message = "Printing Adult List Details";
 	}
 
-	// **** Method to close the Browser ****
+	// ** Method to close the Browser **
 	@AfterClass
 	public void terminate_Browser() {
 		driver.quit();

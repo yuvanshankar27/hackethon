@@ -46,7 +46,7 @@ public class InvalidTestCases extends BaseClass {
 	GiftCards objGiftCards;
 	String message;
 
-	// **** Method to get Driver Instance ****
+	// ** Method to get Driver Instance **
 	@BeforeClass
 	public void get_Driver_Instance() throws IOException {
 
@@ -54,34 +54,37 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Method to get Test Results ****
-	@AfterMethod
-	public void get_Test_Case_Result(ITestResult result) throws Exception {
-		ExportToExcel objExcelFile = new ExportToExcel();
-		property = BaseClass.invoke_Property_File();
-		if (result.getStatus() == ITestResult.FAILURE) {
-			logger.log(Status.FAIL, MarkupHelper.createLabel(message + " - FAILED", ExtentColor.RED));
-			String screenshotPath = BaseClass.get_ScreenShot_Of_Failed_TestCase(driver, result.getName());
-			logger.fail(result.getThrowable());
-			logger.fail("Test Case Failed Snapshot is below " + logger.addScreenCaptureFromPath(screenshotPath));
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Fail");
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			logger.log(Status.SKIP, MarkupHelper.createLabel(message + " - SKIPPED", ExtentColor.ORANGE));
-			logger.fail(result.getThrowable());
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Skip");
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			logger.log(Status.PASS, MarkupHelper.createLabel(message + " - PASSED", ExtentColor.GREEN));
-			objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
-					result.getName(), "Pass");
-		}
-	}
+	// ** Method to get Test Results **
+			@AfterMethod
+			public void get_Test_Case_Result(ITestResult result) throws Exception {
+				ExportToExcel objExcelFile = new ExportToExcel();
+				property = BaseClass.invoke_Property_File();
+				if (result.getStatus() == ITestResult.FAILURE) {
+					logger.log(Status.FAIL, MarkupHelper.createLabel(message + " - FAILED", ExtentColor.RED));
+					logger.fail(result.getThrowable());
+					String screenshotPath = BaseClass.get_ScreenShot_Of_Failed_TestCase(driver, result.getName());
+					logger.fail("Failed Test Case Snapshot is attached below " + logger.addScreenCaptureFromPath(screenshotPath));
 
-	// **** Test to verify Error Message of Invalid Username ****
-	@Test(priority = 0)
+					objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+							result.getName(), "Fail");
+				} else if (result.getStatus() == ITestResult.SKIP) {
+					logger.log(Status.SKIP, MarkupHelper.createLabel(message + " - SKIPPED", ExtentColor.ORANGE));
+					logger.skip(result.getThrowable());
+					objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+							result.getName(), "Skip");
+				} else if (result.getStatus() == ITestResult.SUCCESS) {
+					logger.log(Status.PASS, MarkupHelper.createLabel(message + " - PASSED", ExtentColor.GREEN));
+					objExcelFile.write_Into_Excel(property.getProperty("fileName"), property.getProperty("sheetName"),
+							result.getName(), "Pass");
+				}
+
+			}
+
+	// ** Test to verify Error Message of Invalid Username **
+	// @Test(priority = 0)
 	public void test_Invalid_Username_Details() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Invalid_Username_Details");
+		logger.assignCategory("Regression Tests");
 		objLogin = new LoginPage(driver);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		objHomePage = new HomePage(driver);
@@ -99,11 +102,12 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify Error Message of Invalid Password ****
-	@Test(priority = 1)
+	// ** Test to verify Error Message of Invalid Password **
+	// @Test(priority = 1)
 	public void test_Invalid_Password_Details() throws IOException, InterruptedException {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		logger = extent.createTest("test_Invalid_Password_Details");
+		logger.assignCategory("Regression Tests");
 		objLogin.set_Password(data.get_Data("Login Page", "InvalidPassWord"));
 		objLogin.click_LogIn_Button();
 		property = BaseClass.invoke_Property_File();
@@ -120,10 +124,11 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify Error Message of Same Location of Travel ****
+	// ** Test to verify Error Message of Same Location of Travel **
 	@Test(priority = 2)
 	public void test_Same_Location_Of_Journey() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Same_Location_Of_Journey");
+		logger.assignCategory("Regression Tests");
 		property = BaseClass.invoke_Property_File();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		objHomePage = new HomePage(driver);
@@ -141,10 +146,11 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify Error Message for Invalid Date of Journey ****
+	// ** Test to verify Error Message for Invalid Date of Journey **
 	@Test(priority = 3)
 	public void test_Invalid_Date_Of_Journey() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Invalid_Date_Of_Journey");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Invalid Date of Journey is Disabled", ExtentColor.CYAN));
 		message = "Displaying Error Message of Invalid Date";
@@ -153,10 +159,11 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify ReturnDate is Disabled ****
+	// ** Test to verify ReturnDate is Disabled **
 	@Test(priority = 4)
 	public void test_ReturnDate_Disabled() throws IOException, InterruptedException {
 		logger = extent.createTest("test_ReturnDate_Disabled");
+		logger.assignCategory("Regression Tests");
 		objCabSearch = new CabSearch(driver);
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Return Date of Journey is Disabled", ExtentColor.CYAN));
@@ -166,10 +173,11 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify OutstationTripType is Selected ****
+	// ** Test to verify OutstationTripType is Selected **
 	@Test(priority = 5)
 	public void test_OutstationTrip_Selected() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_OutstationTrip_Selected");
+		logger.assignCategory("Regression Tests");
 		objCabSearch = new CabSearch(driver);
 		objCabSearch.set_Date_Of_Return(data.get_Data("Cab Page", "ReturnDate"));
 		logger.log(Status.INFO, MarkupHelper.createLabel(
@@ -179,10 +187,11 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Test to verify Error Message of Invalid EmailId ****
+	// ** Test to verify Error Message of Invalid EmailId **
 	@Test(priority = 6)
 	public void test_GiftCard() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_GiftCard");
+		logger.assignCategory("Regression Tests");
 		objHomePage = new HomePage(driver);
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Giftcard Icon is Enabled", ExtentColor.CYAN));
@@ -202,15 +211,16 @@ public class InvalidTestCases extends BaseClass {
 
 	}
 
-	// **** Method to close the Browser ****
+	// ** Method to close the Browser **
 	@AfterClass
 	public void terminate_Browser() {
 		driver.quit();
 	}
 
-	// **** Method to end the Report ****
+	// ** Method to end the Report **
 	@AfterSuite
 	public void terminate_Report() {
+
 		extent.flush();
 	}
 
