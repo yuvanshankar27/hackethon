@@ -30,17 +30,7 @@
    </profile>
    </profiles> 
       <dependencies>
-      <dependency>
-    <groupId>org.codehaus.groovy</groupId>
-    <artifactId>groovy-all</artifactId>
-    <version>3.0.4</version>
-    <type>pom</type>
-</dependency>
-      <dependency>
-    <groupId>commons-jelly</groupId>
-    <artifactId>commons-jelly</artifactId>
-    <version>1.0.1</version>
-</dependency>
+      
       
     <dependency>
     <groupId>org.apache.maven.plugins</groupId>
