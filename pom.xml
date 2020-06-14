@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
    <profiles>
    <profile>
-    <id>Smoke</id>
+    <id>Regression</id>
             <build>
     <pluginManagement>
     <plugins>
@@ -16,7 +16,7 @@
         <configuration>
           <forkMode>never</forkMode>
           <suiteXmlFiles>
-           <suiteXmlFile>Suite Files\Smoke.xml</suiteXmlFile>
+           <suiteXmlFile>Suite Files\Regression.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       
