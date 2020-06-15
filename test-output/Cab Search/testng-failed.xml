@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Cab Search]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Cab Search Test(failed)">
+  <test thread-count="5" parallel="classes" name="Cab Search Test(failed)">
     <classes>
       <class name="TestCases.ValidTestCases">
         <methods>
@@ -9,9 +9,21 @@
           <include name="terminate_Browser"/>
           <include name="get_Driver_Instance"/>
           <include name="generate_ExtentReport"/>
+          <include name="test_Set_Cab_Details"/>
           <include name="get_Test_Case_Result"/>
         </methods>
       </class> <!-- TestCases.ValidTestCases -->
+      <class name="TestCases.InvalidTestCases">
+        <methods>
+          <include name="terminate_Report"/>
+          <include name="get_Driver_Instance"/>
+          <include name="test_OutstationTrip_Selected"/>
+          <include name="get_Test_Case_Result"/>
+          <include name="generate_ExtentReport"/>
+          <include name="terminate_Browser"/>
+          <include name="test_Invalid_Date_Of_Journey"/>
+        </methods>
+      </class> <!-- TestCases.InvalidTestCases -->
     </classes>
   </test> <!-- Cab Search Test(failed) -->
 </suite> <!-- Failed suite [Cab Search] -->
