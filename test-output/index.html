@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Regression_Testing" class="navigator-link">
-              <span class="suite-name border-passed">Regression Testing</span>
+              <span class="suite-name border-failed">Regression Testing</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,7 +91,26 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">23 methods,   23 passed</span>
+                    <span class="method-stats">23 methods, 2 failed,   21 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Regression_Testing" class="hide-methods failed suite-Regression_Testing"> (hide)</a> <!-- hide-methods failed suite-Regression_Testing -->
+                      <a href="#" panel-name="suite-Regression_Testing" class="show-methods failed suite-Regression_Testing"> (show)</a> <!-- show-methods failed suite-Regression_Testing -->
+                    </span>
+                    <div class="method-list-content failed suite-Regression_Testing">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Testing" title="TestCases.InvalidTestCases" class="method navigator-link" hash-for-method="test_Invalid_Password_Details">test_Invalid_Password_Details</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Regression_Testing" title="TestCases.ValidTestCases" class="method navigator-link" hash-for-method="test_LogIn_Details">test_LogIn_Details</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Regression_Testing -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -157,17 +176,7 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Regression_Testing" title="TestCases.InvalidTestCases" class="method navigator-link" hash-for-method="test_Invalid_Password_Details">test_Invalid_Password_Details</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Regression_Testing" title="TestCases.InvalidTestCases" class="method navigator-link" hash-for-method="test_Invalid_Username_Details">test_Invalid_Username_Details</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Regression_Testing" title="TestCases.ValidTestCases" class="method navigator-link" hash-for-method="test_LogIn_Details">test_LogIn_Details</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -227,6 +236,54 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Regression_Testing" class="panel Regression_Testing">
+          <div class="suite-Regression_Testing-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">TestCases.InvalidTestCases</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="test_Invalid_Password_Details">
+                  </a> <!-- test_Invalid_Password_Details -->
+                  <span class="method-name">test_Invalid_Password_Details</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for text (&apos;yuvan&apos;) to be present in element [[RemoteWebDriver: chrome on WINDOWS (17980f7348df41817ebca3968d879b51)] -&gt; xpath: /html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[6]/div[1]/p[1]] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;DESKTOP-D5BDHV5&apos;, ip: &apos;192.168.43.207&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.1&apos;
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.106, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\yuvan\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61349}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 17980f7348df41817ebca3968d8...}
+Session ID: 17980f7348df41817ebca3968d879b51
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at Pages.HomePage.wait_For_Login(HomePage.java:102)
+	at TestCases.InvalidTestCases.test_Invalid_Password_Details(InvalidTestCases.java:123)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Testing-class-failed -->
+          <div class="suite-Regression_Testing-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">TestCases.ValidTestCases</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="test_LogIn_Details">
+                  </a> <!-- test_LogIn_Details -->
+                  <span class="method-name">test_LogIn_Details</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at TestCases.ValidTestCases.test_LogIn_Details(ValidTestCases.java:119)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+... Removed 31 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Testing-class-failed -->
           <div class="suite-Regression_Testing-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -245,13 +302,6 @@
                   <a name="test_Invalid_Date_Of_Journey">
                   </a> <!-- test_Invalid_Date_Of_Journey -->
                   <span class="method-name">test_Invalid_Date_Of_Journey</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="test_Invalid_Password_Details">
-                  </a> <!-- test_Invalid_Password_Details -->
-                  <span class="method-name">test_Invalid_Password_Details</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -351,13 +401,6 @@
                   <a name="test_Hotel_Booking_Page_Title">
                   </a> <!-- test_Hotel_Booking_Page_Title -->
                   <span class="method-name">test_Hotel_Booking_Page_Title</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="test_LogIn_Details">
-                  </a> <!-- test_LogIn_Details -->
-                  <span class="method-name">test_LogIn_Details</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -468,97 +511,97 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(23);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'test_GiftCard')
+data.setCell(0, 1, 'test_Invalid_Password_Details')
 data.setCell(0, 2, 'TestCases.InvalidTestCases')
-data.setCell(0, 3, 15055);
+data.setCell(0, 3, 35500);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'test_Invalid_Password_Details')
+data.setCell(1, 1, 'test_GiftCard')
 data.setCell(1, 2, 'TestCases.InvalidTestCases')
-data.setCell(1, 3, 12386);
+data.setCell(1, 3, 15504);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'test_LogIn_Details')
 data.setCell(2, 2, 'TestCases.ValidTestCases')
-data.setCell(2, 3, 10288);
+data.setCell(2, 3, 10904);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'test_URL_Appear_Correct')
+data.setCell(3, 1, 'test_Set_Cab_Details')
 data.setCell(3, 2, 'TestCases.ValidTestCases')
-data.setCell(3, 3, 7737);
+data.setCell(3, 3, 9857);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'test_Set_Flight_Details')
+data.setCell(4, 1, 'test_URL_Appear_Correct')
 data.setCell(4, 2, 'TestCases.ValidTestCases')
-data.setCell(4, 3, 6885);
+data.setCell(4, 3, 8881);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'test_Set_Cab_Details')
+data.setCell(5, 1, 'test_Set_Flight_Details')
 data.setCell(5, 2, 'TestCases.ValidTestCases')
-data.setCell(5, 3, 6812);
+data.setCell(5, 3, 8845);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'test_Same_Location_Of_Journey')
-data.setCell(6, 2, 'TestCases.InvalidTestCases')
-data.setCell(6, 3, 4689);
+data.setCell(6, 1, 'test_To_Check_Cab_Details')
+data.setCell(6, 2, 'TestCases.ValidTestCases')
+data.setCell(6, 3, 4092);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'test_Invalid_Username_Details')
 data.setCell(7, 2, 'TestCases.InvalidTestCases')
-data.setCell(7, 3, 3925);
+data.setCell(7, 3, 4091);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'test_Flight_Button')
-data.setCell(8, 2, 'TestCases.ValidTestCases')
-data.setCell(8, 3, 3914);
+data.setCell(8, 1, 'test_Same_Location_Of_Journey')
+data.setCell(8, 2, 'TestCases.InvalidTestCases')
+data.setCell(8, 3, 3917);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'test_To_Check_Cab_Details')
+data.setCell(9, 1, 'test_Hotel_Booking_Icon')
 data.setCell(9, 2, 'TestCases.ValidTestCases')
-data.setCell(9, 3, 3612);
+data.setCell(9, 3, 3274);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'test_SignIn_Button')
+data.setCell(10, 1, 'test_Hotel_Booking')
 data.setCell(10, 2, 'TestCases.ValidTestCases')
-data.setCell(10, 3, 1513);
+data.setCell(10, 3, 2659);
 data.setCell(11, 0, 11)
 data.setCell(11, 1, 'test_Cab_Page_Title')
 data.setCell(11, 2, 'TestCases.ValidTestCases')
-data.setCell(11, 3, 723);
+data.setCell(11, 3, 1781);
 data.setCell(12, 0, 12)
-data.setCell(12, 1, 'test_Hotel_Booking')
-data.setCell(12, 2, 'TestCases.ValidTestCases')
-data.setCell(12, 3, 630);
+data.setCell(12, 1, 'test_OutstationTrip_Selected')
+data.setCell(12, 2, 'TestCases.InvalidTestCases')
+data.setCell(12, 3, 1317);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'test_Hotel_Booking_Page_Title')
+data.setCell(13, 1, 'test_SignIn_Button')
 data.setCell(13, 2, 'TestCases.ValidTestCases')
-data.setCell(13, 3, 603);
+data.setCell(13, 3, 1308);
 data.setCell(14, 0, 14)
 data.setCell(14, 1, 'test_Invalid_Date_Of_Journey')
 data.setCell(14, 2, 'TestCases.InvalidTestCases')
-data.setCell(14, 3, 597);
+data.setCell(14, 3, 1157);
 data.setCell(15, 0, 15)
-data.setCell(15, 1, 'test_OutstationTrip_Selected')
-data.setCell(15, 2, 'TestCases.InvalidTestCases')
-data.setCell(15, 3, 452);
+data.setCell(15, 1, 'test_Cab_Icon')
+data.setCell(15, 2, 'TestCases.ValidTestCases')
+data.setCell(15, 3, 690);
 data.setCell(16, 0, 16)
-data.setCell(16, 1, 'test_Hotel_Booking_Icon')
+data.setCell(16, 1, 'test_Flight_Page_Title')
 data.setCell(16, 2, 'TestCases.ValidTestCases')
-data.setCell(16, 3, 279);
+data.setCell(16, 3, 603);
 data.setCell(17, 0, 17)
-data.setCell(17, 1, 'test_Cab_Icon')
+data.setCell(17, 1, 'test_Flight_Button')
 data.setCell(17, 2, 'TestCases.ValidTestCases')
-data.setCell(17, 3, 267);
+data.setCell(17, 3, 299);
 data.setCell(18, 0, 18)
-data.setCell(18, 1, 'test_Flight_Icon')
+data.setCell(18, 1, 'test_OutstationOneWay_TripType')
 data.setCell(18, 2, 'TestCases.ValidTestCases')
-data.setCell(18, 3, 134);
+data.setCell(18, 3, 188);
 data.setCell(19, 0, 19)
-data.setCell(19, 1, 'test_Home_Page_Title')
+data.setCell(19, 1, 'test_Flight_Icon')
 data.setCell(19, 2, 'TestCases.ValidTestCases')
-data.setCell(19, 3, 108);
+data.setCell(19, 3, 181);
 data.setCell(20, 0, 20)
-data.setCell(20, 1, 'test_OutstationOneWay_TripType')
+data.setCell(20, 1, 'test_Home_Page_Title')
 data.setCell(20, 2, 'TestCases.ValidTestCases')
-data.setCell(20, 3, 95);
+data.setCell(20, 3, 161);
 data.setCell(21, 0, 21)
-data.setCell(21, 1, 'test_Flight_Page_Title')
+data.setCell(21, 1, 'test_Hotel_Booking_Page_Title')
 data.setCell(21, 2, 'TestCases.ValidTestCases')
-data.setCell(21, 3, 66);
+data.setCell(21, 3, 152);
 data.setCell(22, 0, 22)
 data.setCell(22, 1, 'test_ReturnDate_Disabled')
 data.setCell(22, 2, 'TestCases.InvalidTestCases')
-data.setCell(22, 3, 38);
+data.setCell(22, 3, 53);
 window.suiteTableData['Regression_Testing']= { tableData: data, tableDiv: 'times-div-Regression_Testing'}
 return data;
 }
@@ -599,210 +642,214 @@ return data;
               <div class="chronological-class-name">TestCases.ValidTestCases</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">get_Driver_Instance</span>
-                <span class="method-start">398 ms</span>
+                <span class="method-start">544 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">test_URL_Appear_Correct</span>
-                <span class="method-start">22154 ms</span>
+                <span class="method-start">37878 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_URL_Appear_Correct status=SUCCESS method=ValidTestCases.test_URL_Appear_Correc...)</span>
-                <span class="method-start">29904 ms</span>
+                <span class="method-start">46768 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Home_Page_Title</span>
-                <span class="method-start">32561 ms</span>
+                <span class="method-start">50012 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Home_Page_Title status=SUCCESS method=ValidTestCases.test_Home_Page_Title()[pr...)</span>
-                <span class="method-start">32676 ms</span>
+                <span class="method-start">50183 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_SignIn_Button</span>
-                <span class="method-start">33243 ms</span>
+                <span class="method-start">50640 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_SignIn_Button status=SUCCESS method=ValidTestCases.test_SignIn_Button()[pri:3,...)</span>
-                <span class="method-start">34759 ms</span>
+                <span class="method-start">51953 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">test_LogIn_Details</span>
-                <span class="method-start">35392 ms</span>
+                <span class="method-start">52408 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">get_Test_Case_Result([TestResult name=test_LogIn_Details status=SUCCESS method=ValidTestCases.test_LogIn_Details()[pri:4,...)</span>
-                <span class="method-start">45695 ms</span>
+                <span class="method-name">get_Test_Case_Result([TestResult name=test_LogIn_Details status=FAILURE method=ValidTestCases.test_LogIn_Details()[pri:4,...)</span>
+                <span class="method-start">63450 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Flight_Icon</span>
-                <span class="method-start">46289 ms</span>
+                <span class="method-start">68918 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Flight_Icon status=SUCCESS method=ValidTestCases.test_Flight_Icon()[pri:5, ins...)</span>
-                <span class="method-start">46426 ms</span>
+                <span class="method-start">69101 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Cab_Icon</span>
-                <span class="method-start">46896 ms</span>
+                <span class="method-start">69543 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Cab_Icon status=SUCCESS method=ValidTestCases.test_Cab_Icon()[pri:6, instance:...)</span>
-                <span class="method-start">47165 ms</span>
+                <span class="method-start">70238 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Cab_Page_Title</span>
-                <span class="method-start">47470 ms</span>
+                <span class="method-start">70697 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Cab_Page_Title status=SUCCESS method=ValidTestCases.test_Cab_Page_Title()[pri:...)</span>
-                <span class="method-start">48198 ms</span>
+                <span class="method-start">72485 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_OutstationOneWay_TripType</span>
-                <span class="method-start">48486 ms</span>
+                <span class="method-start">72882 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_OutstationOneWay_TripType status=SUCCESS method=ValidTestCases.test_Outstation...)</span>
-                <span class="method-start">48584 ms</span>
+                <span class="method-start">73072 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Set_Cab_Details</span>
-                <span class="method-start">48925 ms</span>
+                <span class="method-start">73329 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Set_Cab_Details status=SUCCESS method=ValidTestCases.test_Set_Cab_Details()[pr...)</span>
-                <span class="method-start">55740 ms</span>
+                <span class="method-start">83193 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_To_Check_Cab_Details</span>
-                <span class="method-start">55953 ms</span>
+                <span class="method-start">83716 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_To_Check_Cab_Details status=SUCCESS method=ValidTestCases.test_To_Check_Cab_De...)</span>
-                <span class="method-start">59568 ms</span>
+                <span class="method-start">87810 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Flight_Button</span>
-                <span class="method-start">60128 ms</span>
+                <span class="method-start">88120 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Flight_Button status=SUCCESS method=ValidTestCases.test_Flight_Button()[pri:11...)</span>
-                <span class="method-start">64044 ms</span>
+                <span class="method-start">88422 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Flight_Page_Title</span>
-                <span class="method-start">64368 ms</span>
+                <span class="method-start">88931 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Flight_Page_Title status=SUCCESS method=ValidTestCases.test_Flight_Page_Title(...)</span>
-                <span class="method-start">64445 ms</span>
+                <span class="method-start">89540 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Set_Flight_Details</span>
-                <span class="method-start">64862 ms</span>
+                <span class="method-start">89804 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Set_Flight_Details status=SUCCESS method=ValidTestCases.test_Set_Flight_Detail...)</span>
-                <span class="method-start">71749 ms</span>
+                <span class="method-start">98652 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Hotel_Booking_Icon</span>
-                <span class="method-start">71966 ms</span>
+                <span class="method-start">99021 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Hotel_Booking_Icon status=SUCCESS method=ValidTestCases.test_Hotel_Booking_Ico...)</span>
-                <span class="method-start">72247 ms</span>
+                <span class="method-start">102298 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Hotel_Booking_Page_Title</span>
-                <span class="method-start">73164 ms</span>
+                <span class="method-start">102953 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Hotel_Booking_Page_Title status=SUCCESS method=ValidTestCases.test_Hotel_Booki...)</span>
-                <span class="method-start">73770 ms</span>
+                <span class="method-start">103110 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Hotel_Booking</span>
-                <span class="method-start">73983 ms</span>
+                <span class="method-start">103594 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Hotel_Booking status=SUCCESS method=ValidTestCases.test_Hotel_Booking()[pri:16...)</span>
-                <span class="method-start">74615 ms</span>
+                <span class="method-start">106256 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">terminate_Browser</span>
-                <span class="method-start">74898 ms</span>
+                <span class="method-start">107261 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">TestCases.InvalidTestCases</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">get_Driver_Instance</span>
-                <span class="method-start">80357 ms</span>
+                <span class="method-start">118999 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">test_Invalid_Username_Details</span>
-                <span class="method-start">97699 ms</span>
+                <span class="method-start">154115 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Invalid_Username_Details status=SUCCESS method=InvalidTestCases.test_Invalid_U...)</span>
-                <span class="method-start">101625 ms</span>
+                <span class="method-start">158207 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">test_Invalid_Password_Details</span>
-                <span class="method-start">102000 ms</span>
+                <span class="method-start">158664 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">get_Test_Case_Result([TestResult name=test_Invalid_Password_Details status=SUCCESS method=InvalidTestCases.test_Invalid_P...)</span>
-                <span class="method-start">114388 ms</span>
+                <span class="method-name">get_Test_Case_Result([TestResult name=test_Invalid_Password_Details status=FAILURE method=InvalidTestCases.test_Invalid_P...)</span>
+                <span class="method-start">194168 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Same_Location_Of_Journey</span>
-                <span class="method-start">114820 ms</span>
+                <span class="method-start">195679 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Same_Location_Of_Journey status=SUCCESS method=InvalidTestCases.test_Same_Loca...)</span>
-                <span class="method-start">119510 ms</span>
+                <span class="method-start">199597 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_Invalid_Date_Of_Journey</span>
-                <span class="method-start">119874 ms</span>
+                <span class="method-start">199985 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_Invalid_Date_Of_Journey status=SUCCESS method=InvalidTestCases.test_Invalid_Da...)</span>
-                <span class="method-start">120472 ms</span>
+                <span class="method-start">201143 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_ReturnDate_Disabled</span>
-                <span class="method-start">120733 ms</span>
+                <span class="method-start">201419 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_ReturnDate_Disabled status=SUCCESS method=InvalidTestCases.test_ReturnDate_Dis...)</span>
-                <span class="method-start">120772 ms</span>
+                <span class="method-start">201473 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_OutstationTrip_Selected</span>
-                <span class="method-start">120984 ms</span>
+                <span class="method-start">201668 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_OutstationTrip_Selected status=SUCCESS method=InvalidTestCases.test_Outstation...)</span>
-                <span class="method-start">121437 ms</span>
+                <span class="method-start">202986 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">test_GiftCard</span>
-                <span class="method-start">121662 ms</span>
+                <span class="method-start">203278 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">get_Test_Case_Result([TestResult name=test_GiftCard status=SUCCESS method=InvalidTestCases.test_GiftCard()[pri:6, instanc...)</span>
-                <span class="method-start">136718 ms</span>
+                <span class="method-start">218784 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">terminate_Browser</span>
-                <span class="method-start">136961 ms</span>
+                <span class="method-start">218987 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">terminate_Report</span>
-                <span class="method-start">139173 ms</span>
+                <span class="method-start">219409 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
