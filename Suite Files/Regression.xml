@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Regression Testing" thread-count="2">
-  <test name="Regression Test"  >
+<suite name="Regression Testing" thread-count="2" >
+  <test name="Regression Test 1"  >
+  <parameter name="node" value="http://192.168.43.207:19962"/>
     <classes >
       <class name="TestCases.ValidTestCases"/>
+    </classes>
+  </test> <!-- Test -->
+    <test name="Regression Test 2"  >
+    <parameter name="node" value="http://192.168.43.207:21399"/>
+    <classes >
+      
       <class name="TestCases.InvalidTestCases"/>
     </classes>
   </test> <!-- Test -->

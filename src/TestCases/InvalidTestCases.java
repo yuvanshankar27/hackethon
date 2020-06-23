@@ -81,7 +81,7 @@ public class InvalidTestCases extends BaseClass {
 			}
 
 	// ** Test to verify Error Message of Invalid Username **
-	// @Test(priority = 0)
+	 @Test(priority = 0)
 	public void test_Invalid_Username_Details() throws IOException, InterruptedException {
 		logger = extent.createTest("test_Invalid_Username_Details");
 		logger.assignCategory("Regression Tests");
@@ -103,7 +103,7 @@ public class InvalidTestCases extends BaseClass {
 	}
 
 	// ** Test to verify Error Message of Invalid Password **
-	// @Test(priority = 1)
+	 @Test(priority = 1)
 	public void test_Invalid_Password_Details() throws IOException, InterruptedException {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		logger = extent.createTest("test_Invalid_Password_Details");

@@ -27,6 +27,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseClass {
 	public static WebDriver driver;
 	public static RemoteWebDriver Remotedriver;
@@ -57,7 +59,7 @@ public class BaseClass {
 				capabilities = DesiredCapabilities.edge();
 			}
 
-			Remotedriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+			Remotedriver = new RemoteWebDriver(new URL("http://192.168.43.207:4444/wd/hub"), capabilities);
 			Remotedriver.manage().window().maximize();
 			Remotedriver.navigate().to(property.getProperty("website_URL"));
 			return Remotedriver;
@@ -65,31 +67,25 @@ public class BaseClass {
 		} else {
 
 			if (property.getProperty("browserName").equalsIgnoreCase("firefox")) {
-				System.setProperty("webdriver.gecko.driver",
-						System.getProperty("user.dir") + "\\Webdrivers\\geckodriver.exe");
+			    WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 			} else if (property.getProperty("browserName").equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver",
-						System.getProperty("user.dir") + "\\Webdrivers\\chromedriver.exe");
+				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 			} else if (property.getProperty("browserName").equalsIgnoreCase("Internet Explorer")) {
-				System.setProperty("webdriver.ie.driver",
-						System.getProperty("user.dir") + "\\Webdrivers\\IEDriverServer.exe");
-
+				WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 			} else if (property.getProperty("browserName").equalsIgnoreCase("opera")) {
-				System.setProperty("webdriver.opera.driver",
-						System.getProperty("user.dir") + "\\Webdrivers\\operadriver.exe");
+				WebDriverManager.operadriver().setup();
 				driver = new OperaDriver();
 			} else if (property.getProperty("browserName").equalsIgnoreCase("edge")) {
-				System.setProperty("webdriver.edge.driver",
-						System.getProperty("user.dir") + "\\Webdrivers\\msedgedriver.exe");
+				WebDriverManager.edgedriver().setup();
 				driver = new EdgeDriver();
 			}
+			
 			driver.manage().window().maximize();
 			driver.get(property.getProperty("website_URL"));
 			return driver;
-
 		}
 
 	}

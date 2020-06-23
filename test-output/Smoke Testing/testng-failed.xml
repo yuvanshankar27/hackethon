@@ -9,6 +9,7 @@
           <include name="test_LogIn_Details"/>
           <include name="get_Driver_Instance"/>
           <include name="generate_ExtentReport"/>
+          <include name="test_Set_Cab_Details"/>
           <include name="get_Test_Case_Result"/>
         </methods>
       </class> <!-- TestCases.ValidTestCases -->

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,7 +24,7 @@ public class HomePage {
 
 	TestData data = new TestData();
 
-	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[6]/div[1]/p[1]")
+	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[6]/div[1]/p[1]")
 	WebElement loggedInUserName;
 
 	@FindBy(xpath = "//div[@id='SW']//li[7]//a[1]")
@@ -51,7 +52,9 @@ public class HomePage {
 	// **** Method to click SignIn Button ****
 	public boolean click_SignIn_Button() {
 		boolean checkBtn = signInBtn.isEnabled();
-		driver.findElement(By.xpath(property.getProperty("login_or_CreateAcc_xpath"))).click();
+		Actions action=new Actions(driver);
+		WebElement logIn =driver.findElement(By.xpath(property.getProperty("login_or_CreateAcc_xpath")));
+		action.moveToElement(logIn).moveToElement(driver.findElement(By.xpath(property.getProperty("login_via_phone")))).click().build().perform();
 		return checkBtn;
 	}
 

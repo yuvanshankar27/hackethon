@@ -91,7 +91,7 @@ public class ValidTestCases extends BaseClass {
 	}
 
 	// ** Test to verify SigIn button is Enabled **
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void test_SignIn_Button() throws IOException, InterruptedException, ParseException {
 
 		logger = extent.createTest("test_SignIn_Button");
@@ -106,7 +106,7 @@ public class ValidTestCases extends BaseClass {
 	}
 
 	// ** Test to perform and verify Login **
-	//@Test(priority = 4)
+	@Test(priority = 4)
 	public void test_LogIn_Details() throws IOException {
 		logger = extent.createTest("test_LogIn_Details");
 		logger.assignCategory("Smoke Tests");
