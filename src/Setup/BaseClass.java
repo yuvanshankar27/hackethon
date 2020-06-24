@@ -59,7 +59,7 @@ public class BaseClass {
 				capabilities = DesiredCapabilities.edge();
 			}
 
-			Remotedriver = new RemoteWebDriver(new URL("http://192.168.43.207:4444/wd/hub"), capabilities);
+			Remotedriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 			Remotedriver.manage().window().maximize();
 			Remotedriver.navigate().to(property.getProperty("website_URL"));
 			return Remotedriver;
