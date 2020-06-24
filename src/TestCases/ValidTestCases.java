@@ -248,6 +248,7 @@ public class ValidTestCases extends BaseClass {
 	@Test(priority = 13)
 	public void test_Set_Flight_Details() throws IOException, InterruptedException, ParseException {
 		logger = extent.createTest("test_Set_Flight_Details");
+		logger.assignCategory("Regression Tests");
 		logger.log(Status.INFO,
 				MarkupHelper.createLabel("Test to Verify - Flight Details are set successfully", ExtentColor.CYAN));
 		message = "Set Flight Details";
