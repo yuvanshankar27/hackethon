@@ -5,7 +5,9 @@
     <classes>
       <class name="TestCases.ValidTestCases">
       	<methods >
-      	<include name="test_Cab_Icon"/>
+      	<include name="test_SignIn_Button"/>
+        <include name="test_LogIn_Details"/>
+       	<include name="test_Cab_Icon"/>
         <include name="test_Cab_Page_Title"/>
         <include name="test_OutstationOneWay_TripType"/>
         <include name="test_Set_Cab_Details"/>
@@ -14,6 +16,8 @@
     	</class>
       <class name="TestCases.InvalidTestCases">
       	<methods >
+      	<include name="test_Invalid_Username_Details"/>
+        <include name="test_Invalid_Password_Details"/>
       	<include name="test_Same_Location_Of_Journey"/>
         <include name="test_Invalid_Date_Of_Journey"/>
         <include name="test_ReturnDate_Disabled"/>

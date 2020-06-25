@@ -5,7 +5,9 @@
     <classes>
       <class name="TestCases.ValidTestCases">
       	<methods >
-      	<include name="test_Hotel_Booking_Icon"/>
+      	<include name="test_SignIn_Button"/>
+        <include name="test_LogIn_Details"/>
+       	<include name="test_Hotel_Booking_Icon"/>
         <include name="test_Hotel_Booking_Page_Title"/>
         <include name="test_Hotel_Booking"/>
     	</methods>

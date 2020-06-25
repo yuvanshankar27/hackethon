@@ -5,6 +5,8 @@
     <classes>
       <class name="TestCases.InvalidTestCases">
       	<methods >
+      	<include name="test_Invalid_Username_Details"/>
+        <include name="test_Invalid_Password_Details"/>
       	<include name="test_GiftCard"/>
     	</methods>
     	</class>
